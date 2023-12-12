@@ -1,0 +1,27 @@
+---
+import clsx from 'clsx';
+import IconButton from './IconButton.astro';
+
+const { active = 1, showing = 10, count = 10, className } = Astro.props;
+
+const range = Array(count / showing).fill(0).map((_, i) => i + 1);
+---
+<div class={clsx('flex items-center space-x-2', className)}>
+  <IconButton>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4l-8 8 8 8"/></svg>
+  </IconButton>
+  {range.map(page => (
+    <IconButton
+      key={page}
+      color={page === active ? 'primary' : 'transparent'}
+    >
+      <span class="flex items-center justify-center w-4 h-4">
+        {page}
+      </span>
+    </IconButton>
+  ))}
+  <IconButton><span class="flex items-center justify-center w-4 h-4">...</span></IconButton>
+  <IconButton>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4l8 8-8 8"/></svg>
+  </IconButton>
+</div>

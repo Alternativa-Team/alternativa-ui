@@ -1,0 +1,69 @@
+---
+import Button from '$components/Button.astro';
+import ContentSection from '$components/ContentSection.astro';
+import ContentSectionTitle from '$components/ContentSectionTitle.astro';
+import Textbox from '$components/Textbox.astro';
+---
+<ContentSection id="profile-information">
+  <form action="/profile" class="space-y-6">
+    <div
+      x-data={`{photoName: null, photoPreview: null, originalPhoto: 'https://randomuser.me/api/portraits/women/17.jpg'}`}
+      class="flex flex-col items-center w-56 px-4 py-2 mx-auto"
+    >
+      <img
+        x-bind:src="photoPreview || originalPhoto"
+        alt="Julia Santos' Avatar"
+        class="object-cover w-32 h-32 mx-auto border border-gray-300 rounded-lg"
+      />
+      <Button type="button" @click="$refs.photo.click()" className="mt-4">
+        Change photo
+      </Button>
+      <input
+        type="file"
+        accept="image/*"
+        name="photo"
+        x-ref="photo"
+        x-on:change="
+          photoName = null;
+          photoPreview = null;
+          photoName = $event.target.files[0]?.name;
+          const reader = new FileReader();
+          reader.onload = (e) => {
+              photoPreview = e.target.result;
+          };
+          if ($event.target.files[0]) {
+            reader.readAsDataURL($event.target.files[0]);
+          }
+
+        "
+        class="hidden"
+      />
+    </div>
+    <div class="max-w-lg mx-auto space-y-4">
+      <div>
+        <ContentSectionTitle>Profile Information</ContentSectionTitle>
+        <p class="text-gray-500">
+          Update your account's profile information and email address.
+        </p>
+      </div>
+      <div action="/profile" class="space-y-4">
+        <Textbox
+          label="Name"
+          name="name"
+          placeholder="Enter your name"
+          value="Julia Santos"
+        />
+        <Textbox
+          label="Email"
+          name="email"
+          type="email"
+          placeholder="Enter your email"
+          value="juliasantos@email.com"
+        />
+        <div class="flex justify-end">
+          <Button>Save</Button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ContentSection>

@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-ExtraLight.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-ExtraLight.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: italic;
+    font-weight: 200;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-ExtraLightItalic.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-ExtraLightItalic.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-Light.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-Light.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-LightItalic.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-LightItalic.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-Regular.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-Regular.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-RegularItalic.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-RegularItalic.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-Medium.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-Medium.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-MediumItalic.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-MediumItalic.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-SemiBold.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-SemiBold.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-SemiBoldItalic.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-SemiBoldItalic.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-Bold.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-Bold.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-BoldItalic.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-BoldItalic.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-ExtraBold.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-ExtraBold.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: italic;
+    font-weight: 800;
+    font-display: swap;
+    src: url('/fonts/PlusJakartaSans-ExtraBoldItalic.woff2') format('woff2'),
+      url('/fonts/PlusJakartaSans-ExtraBoldItalic.woff') format('woff');
+  }
+
+  [type='checkbox']:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12l6 6L20 6'/%3E%3C/svg%3E");
+    background-size: 0.75rem;
+    @apply bg-center bg-no-repeat;
+  }
+
+  select:not(.reset) {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280%0A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 17l4 4 4-4'/%3E%3Cpath d='M8 7l4-4 4 4'/%3E%3C/svg%3E");
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+  }
+
+  [x-cloak] {
+    @apply hidden;
+  }
+}

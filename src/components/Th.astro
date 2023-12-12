@@ -1,0 +1,6 @@
+---
+import clsx from 'clsx';
+
+const { padding = 'p-4', className } = Astro.props;
+---
+<th scope="col" class={clsx(padding, className)}><slot /></th>

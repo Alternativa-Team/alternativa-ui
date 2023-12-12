@@ -1,0 +1,89 @@
+---
+import Avatar from '$components/Avatar.astro';
+import Badge from '$components/Badge.astro';
+import Card from '$components/Card.astro';
+import ContentSection from '$components/ContentSection.astro';
+import ContentSectionTitle from '$components/ContentSectionTitle.astro';
+import Link from '$components/Link.astro';
+import TBody from '$components/TBody.astro';
+import Td from '$components/Td.astro';
+import Th from '$components/Th.astro';
+import THead from '$components/THead.astro';
+import { orders, statuses } from '$dummies/orders.js';
+
+const { className } = Astro.props;
+
+const shownOrders = orders.slice(0, 5);
+---
+<ContentSection className={className}>
+  <div class="flex items-center justify-between">
+    <ContentSectionTitle>Recent Orders</ContentSectionTitle>
+    <Link href="#">View all</Link>
+  </div>
+  <Card className="overflow-hidden -mx-6 sm:mx-0">
+    <table class="hidden min-w-full md:block">
+      <THead>
+        <tr>
+          <Th>
+            Buyer
+          </Th>
+          <Th className="text-right">
+            Amount
+          </Th>
+          <Th>
+            Status
+          </Th>
+          <Th className="text-right">
+            Date
+          </Th>
+        </tr>
+      </THead>
+      <TBody>
+      {shownOrders.map(({ buyer: {avatar, name, email}, amount, status, date }) => (
+        <tr>
+          <Td className="w-full">
+            <div class="flex items-center">
+              <Avatar src={avatar} alt={`${name}'s avatar'`} />
+              <div class="ml-3">
+                <p class="font-medium">{name}</p>
+                <p class="text-gray-500">{email}</p>
+              </div>
+            </div>
+          </Td>
+          <Td className="text-right">
+            $ {amount} USD
+          </Td>
+          <Td>
+            <Badge color={statuses[status]}>{status}</Badge>
+          </Td>
+          <Td className="text-right">
+            {date}
+          </Td>
+        </tr>
+      ))}
+      </TBody>
+    </table>
+    <div class="block md:hidden">
+      <ul class="text-gray-700 divide-y divide-gray-300">
+        {shownOrders.map(({ buyer: {avatar, name, email}, amount, date, status }) => (
+          <li class="px-6 py-4 sm:p-4">
+            <div class="flex items-center justify-between">
+              <span class="text-gray-500">{date}</span>
+              <Badge color={statuses[status]}>{status}</Badge>
+            </div>
+            <div class="flex flex-col mt-3 sm:items-center sm:flex-row sm:justify-between">
+              <div class="flex items-center">
+                <Avatar src={avatar} alt={`${name}'s avatar'`} className="hidden sm:block" />
+                <div class="sm:ml-3">
+                  <p class="font-medium">{name}</p>
+                  <p class="text-gray-500 truncate">{email}</p>
+                </div>
+              </div>
+              <span>$ {amount} USD</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Card>
+</ContentSection>

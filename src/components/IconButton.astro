@@ -1,0 +1,56 @@
+---
+import clsx from 'clsx';
+
+const { as = 'button', color = 'transparent', size = 'md', noHover, className, ...props } = Astro.props;
+
+const getSize = (size) => {
+  const sizes = {
+    sm: 'p-2 sm:p-1',
+    md: 'p-3 sm:p-2',
+    lg: 'p-3',
+  };
+
+  return sizes[size];
+};
+
+const getColor = (color) => {
+  const noBorder = 'border border-transparent';
+  const noTransparent = 'ring-offset-2 shadow-sm';
+  const noWhiteClasses = clsx('text-white', noBorder);
+  const noDangerClasses = 'ring-primary-600';
+
+  const colors = {
+    primary: clsx(
+      'bg-primary-600 hover:bg-primary-700 ',
+      noWhiteClasses,
+      noDangerClasses,
+      noTransparent,
+    ),
+    danger: clsx('bg-danger-600 hover:bg-danger-700 ', noWhiteClasses, noTransparent),
+    white: clsx(
+      'bg-white hover:bg-gray-50 text-gray-700 border border-gray-300',
+      noDangerClasses,
+      noTransparent,
+    ),
+    transparent: clsx('text-gray-700', noBorder, noDangerClasses, {'hover:bg-gray-100': !noHover}),
+  };
+
+  return colors[color];
+}
+
+const classes = clsx(
+  'inline-flex transition rounded-lg outline-none disabled:cursor-not-allowed disabled:opacity-60 active:scale-90 focus:ring-2',
+  getSize(size),
+  getColor(color),
+  className
+);
+---
+{as === 'a' ? (
+  <a {...props} class={classes}>
+    <slot />
+  </a>
+) : (
+  <button {...props} class={classes}>
+    <slot />
+  </button>
+)}
